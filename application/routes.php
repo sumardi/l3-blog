@@ -32,12 +32,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.index');
-});
 
 Route::controller(Controller::detect());
+
+Route::get('/', array('uses' => 'post@index'));
+Route::get('login', array('uses'=> 'user@login'));
+
 
 /*
 |--------------------------------------------------------------------------

@@ -24,7 +24,7 @@ class Post_Controller extends Base_Controller
 	*/
 	public function __construct()
 	{
-		$this->filter('before', 'auth')->except(array('view'));
+		$this->filter('before', 'auth')->except(array('view', 'index'));
 	}
 
 	/**
@@ -50,8 +50,11 @@ class Post_Controller extends Base_Controller
 	public function get_view($id)
 	{
 		$post = Post::find($id);
+		$post_id = Crypter::encrypt($post->id);
 
-		return View::make('post.view')->with($post);
+		return View::make('post.view')
+				->with('post', $post)
+				->with('post_id', $post_id);
 	}
 
 	/**
@@ -122,7 +125,7 @@ class Post_Controller extends Base_Controller
 			} else {
 				return Redirect::to('post/create')->with_errors($validation)->with_input();	
 			}			
-		} else {
+		} else {			
 			$user = User::find(Auth::user()->id)->first();
 
 			if (!is_null($post_id)) {
@@ -145,5 +148,18 @@ class Post_Controller extends Base_Controller
 				return Redirect::to('post/dashboard');
 			}
 		}
+	}
+
+	/**
+	* 	Main page
+	* 
+	* 	@access public
+	* 	@return Laravel\View
+	*/
+	public function get_index() 
+	{
+		$posts = Post::order_by('created_at', 'desc')->paginate(5);
+
+		return View::make('post.index')->with('posts', $posts);
 	}
 }

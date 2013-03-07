@@ -14,7 +14,7 @@ class User_Controller extends Base_Controller
 	* 	@access public
 	* 	@var boolean enable restful
 	*/
-	public $restful = true;
+	public $restful = true; // default - false
 
 	/**
 	* 	Contructor method

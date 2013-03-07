@@ -9,15 +9,15 @@
 </head>
 
 <body>
-	<div class="container-narrow">
-		<div class="row-fluid">
-			<span class="span12">
-				<ul class="nav nav-pills pull-right">
-					<li>{{ HTML::link('/', 'Home') }}</li>
-					<li>{{ HTML::link('/user/login', 'Login') }}</li					
+	<div class="container">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">My Blog</a>
+				<ul class="nav">
+					<li>{{ HTML::link('/post', 'Home') }}</li>
+				<li>{{ HTML::link('/user/login', 'Login') }}</li>					
 				</ul>
-				<h3 class="muted">My Blog</h3>
-			</span>			 	
+			</div>
 		</div>
 
 		<div class="row-fluid">
