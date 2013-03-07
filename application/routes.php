@@ -36,7 +36,8 @@
 Route::controller(Controller::detect());
 
 Route::get('/', array('uses' => 'post@index'));
-Route::get('login', array('uses'=> 'user@login'));
+Route::get('login', array('uses' => 'user@login'));
+Route::get('logout', array('uses' => 'user@logout'));
 
 
 /*
@@ -109,5 +110,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('user/login');
+	if (Auth::guest()) return Redirect::to('login');
 });

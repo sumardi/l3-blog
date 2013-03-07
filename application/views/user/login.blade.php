@@ -11,6 +11,6 @@
 		<h2 class="form-signin-heading">User Login</h2>
 		<input type="text" value="{{ Input::old('username') }}" name="username" class="input-block-level" placeholder="Username">
 		<input type="password" name="password" class="input-block-level" placeholder="Password">	
-		<button class="btn btn-large btn-primary" type="submit">Sign in</button>
-	{{ Form::close() }}
+		<button class="btn btn-large btn-primary" type="submit">Sign in</button>		
+	{{ Form::close() }}	
 @endsection

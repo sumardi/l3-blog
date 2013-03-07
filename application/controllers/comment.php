@@ -25,8 +25,10 @@ class Comment_Controller extends Base_Controller
 	public function post_new()
 	{
 		$rules = array(
+				'name' => 'required',
+				'email' => 'required|email',
 				'subject' => 'required|min:5',
-				'message' => 'required|min:20'
+				'message' => 'required|min:20',
 			);
 
 		$validation = Validator::make(Input::all(), $rules);
@@ -41,6 +43,8 @@ class Comment_Controller extends Base_Controller
 			$post = Post::find($post_id);
 
 			$comment = new Comment(array(
+							'name' => Input::get('name'),
+							'email' => Input::get('email'),
 							'subject' => Input::get('subject'),
 							'message' => Input::get('message')
 						));

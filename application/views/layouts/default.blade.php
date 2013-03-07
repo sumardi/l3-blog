@@ -14,21 +14,25 @@
 			<div class="navbar-inner">
 				<a class="brand" href="#">My Blog</a>
 				<ul class="nav">
-					<li>{{ HTML::link('/post', 'Home') }}</li>
-				<li>{{ HTML::link('/user/login', 'Login') }}</li>					
+					<li>{{ HTML::link('/', 'Home') }}</li>					
+				</ul>
+				<ul class="nav pull-right">
+					<li>{{ HTML::link('/login', 'Login') }}</li>					
 				</ul>
 			</div>
 		</div>
 
 		<div class="row-fluid">
-			<span class="span9">
+			<span class="span12">
 				@yield('content')
 			</span>			 	
-
-			<span class="span3">
-
-			</span>			 	
 		</div>
-	</div>
+
+		<div id="footer">
+			<div class="panel">
+				<p class="muted credit">Blog Application by <a href="http://about.me/sumardi">Sumardi Shukor</a>.</p>
+			</div>
+		</div>
+	</div>	
 </body>
 </html>
