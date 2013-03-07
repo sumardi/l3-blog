@@ -17,7 +17,18 @@
 					<li>{{ HTML::link('/', 'Home') }}</li>					
 				</ul>
 				<ul class="nav pull-right">
-					<li>{{ HTML::link('/login', 'Login') }}</li>					
+					@if(Auth::guest())
+						<li>{{ HTML::link('/login', 'Login') }}</li>
+					@else
+						<li class="dropdown">
+							{{ HTML::link('#', 'Welcome back, ' . Auth::user()->username, array('class' => 'dropdpwn-toggle', 'data-toggle' => 'dropdown', 'role' => 'button')) }}
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<li>{{ HTML::link('post/dashboard', 'Admin Area') }}</li>
+								<li class="divider">&nbsp;</li>
+								<li>{{ HTML::link('logout', 'Logout') }}</li>
+							</ul>
+						</li>
+					@endif
 				</ul>
 			</div>
 		</div>

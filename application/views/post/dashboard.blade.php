@@ -21,9 +21,9 @@
 		<tbody>
 			@foreach($posts->results as $post)
 			<tr>
-				<td>{{ $post->id }}</td>
+				<td>{{ HTML::link('post/view/' . $post->id, $post->id) }}</td>
 				<td>{{ $post->title }}</td>
-				<td>{{ date('d-m-Y h:i', strtotime($post->created_at)) }}</td>
+				<td>{{ date('d-m-Y h:i a', strtotime($post->created_at)) }}</td>
 				<td>
 					<a href="{{ URL::to('post/update/' . $post->id) }}" class="btn btn-info"><i class="icon-edit">&nbsp;</i></a>&nbsp;
 					<a href="{{ URL::to('post/remove/' . $post->id) }}" class="btn btn-danger"><i class="icon-trash">&nbsp;</i></a>
